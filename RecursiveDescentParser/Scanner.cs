@@ -15,7 +15,7 @@ public class Scanner : IScanner
         Tokens.Clear();
     }
 
-    public IEnumerable<Token> Tokenize()
+    public IList<Token> Tokenize()
     {
         _program = _program.Replace(" ", string.Empty)
             .Replace("\t", string.Empty)

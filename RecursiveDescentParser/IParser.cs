@@ -2,5 +2,6 @@
 
 public interface IParser
 {
-    public SyntaxTree Parse(IEnumerable<Token> tokens);
+    public void Load(IList<Token> tokens);
+    public SyntaxTree Parse();
 }
