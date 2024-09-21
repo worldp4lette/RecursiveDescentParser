@@ -27,6 +27,8 @@ public class Scanner : IScanner
             GetLeftMostToken();
         }
         
+        Tokens.Add(new Token(TokenType.EOF));
+        
         return Tokens;
     }
 

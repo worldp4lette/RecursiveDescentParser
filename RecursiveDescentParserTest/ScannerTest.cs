@@ -15,7 +15,8 @@ public class ScannerTest
         new Token(TokenType.Operator, "+"),
         new Token(TokenType.Id, "x42"),
         new Token(TokenType.Operator, "*"),
-        new Token(TokenType.Number, "66")
+        new Token(TokenType.Number, "66"),
+        new Token(TokenType.EOF)
     ];
 
     private static readonly string Program2 = @"
@@ -28,7 +29,8 @@ public class ScannerTest
         new Token(TokenType.Operator, "+"),
         new Token(TokenType.Id, "xx12se"),
         new Token(TokenType.Operator, "/"),
-        new Token(TokenType.Number, "341")
+        new Token(TokenType.Number, "341"),
+        new Token(TokenType.EOF)
     ];
 
     private static readonly string Program3 = "abc **?!adsf";

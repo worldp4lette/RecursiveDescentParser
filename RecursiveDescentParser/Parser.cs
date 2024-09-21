@@ -11,6 +11,7 @@ public class Parser : IParser
 
     public SyntaxTree Parse()
     {
+        
         throw new NotImplementedException();
     }
 }
