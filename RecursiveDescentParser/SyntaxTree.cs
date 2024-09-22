@@ -51,7 +51,7 @@ public class SyntaxNode
                     throw new ArgumentException("Intermediate node should be an operator.");
                 }
 
-                if (leftChild is not null || rightChild is not null)
+                if (leftChild is null || rightChild is null)
                 {
                     throw new ArgumentException("Operator node should have both left and right children.");
                 }
