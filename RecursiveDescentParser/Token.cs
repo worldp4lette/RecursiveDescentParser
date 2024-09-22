@@ -21,6 +21,11 @@ public record struct Token(TokenType Type, string? Value = null)
     {
         return this.Type == TokenType.Operator && (this.Value?.Equals("/", StringComparison.Ordinal) ?? false);
     }
+
+    public override string ToString()
+    {
+        return Value ?? string.Empty;
+    }
 };
 
 public enum TokenType

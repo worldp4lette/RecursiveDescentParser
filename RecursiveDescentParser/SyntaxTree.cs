@@ -1,12 +1,28 @@
-﻿namespace RecursiveDescentParser;
+﻿using System.Text;
+
+namespace RecursiveDescentParser;
 
 public class SyntaxTree
 {
     public SyntaxNode Root { get; set; } = new SyntaxNode();
 
-    public void PreOrder()
+    public string PreOrder()
     {
-        throw new NotImplementedException();
+        return Walk(Root);
+    }
+
+    private string Walk(SyntaxNode node)
+    {
+        if (node.IsLeaf)
+        {
+            return node.Value.ToString();
+        }
+
+        var left = Walk(node.LeftChild!);
+        var op = node.Value.ToString();
+        var right = Walk(node.RightChild!);
+        
+        return $"{left} {op} {right}";
     }
 }
 
@@ -17,7 +33,7 @@ public class SyntaxNode
     public SyntaxNode? LeftChild { get; init; }
     public SyntaxNode? RightChild { get; init; }
 
-    public SyntaxNode(Token value, bool isLeaf, SyntaxNode? leftChild, SyntaxNode? rightChild)
+    public SyntaxNode(Token value, bool isLeaf = true, SyntaxNode? leftChild = null, SyntaxNode? rightChild = null)
     {
         switch (isLeaf)
         {
@@ -48,6 +64,8 @@ public class SyntaxNode
         LeftChild = leftChild;
         RightChild = rightChild;
     }
+
+    public SyntaxNode(Token value, SyntaxNode leftChild, SyntaxNode rightChild) : this(value, false, leftChild, rightChild) { }
 
     public SyntaxNode()
     {

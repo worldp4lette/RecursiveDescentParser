@@ -60,10 +60,10 @@ public class Parser : IParser
 
         if (op.Type == TokenType.None)
         {
-            return new SyntaxNode(leftChild.Value, true, null, null);
+            return new SyntaxNode(leftChild.Value);
         }
         
-        return new SyntaxNode(op, false, leftChild, rightChild);
+        return new SyntaxNode(op, leftChild, rightChild);
     }
 
     private PrimeReturnType ExprPrime()
@@ -90,10 +90,10 @@ public class Parser : IParser
 
         if (op.Type == TokenType.None)
         {
-            return new SyntaxNode(leftChild.Value, true, null, null);
+            return new SyntaxNode(leftChild.Value);
         }
 
-        return new SyntaxNode(op, false, leftChild, rightChild);
+        return new SyntaxNode(op, leftChild, rightChild);
     }
 
     private PrimeReturnType TermPrime()
@@ -119,7 +119,7 @@ public class Parser : IParser
         {
             case TokenType.Number:
             case TokenType.Id:
-                var node = new SyntaxNode(_token, true, null, null);
+                var node = new SyntaxNode(_token);
                 _token = NextToken();
 
                 return node;
