@@ -35,28 +35,28 @@ public class ScannerTest
 
     private static readonly string Program3 = "abc **?!adsf";
 
-    private IScanner scanner;
+    private IScanner _scanner;
 
     [SetUp]
     public void SetUp()
     {
-        scanner = new Scanner();
+        _scanner = new Scanner();
     }
 
     [Test]
     public void Test_Tokenize()
     {
-        scanner.Load(Program1);
-        Assert.That(scanner.Tokenize().SequenceEqual(Program1Tokens), Is.True);
+        _scanner.Load(Program1);
+        Assert.That(_scanner.Tokenize().SequenceEqual(Program1Tokens), Is.True);
         
-        scanner.Load(Program2);
-        Assert.That(scanner.Tokenize().SequenceEqual(Program2Tokens), Is.True);
+        _scanner.Load(Program2);
+        Assert.That(_scanner.Tokenize().SequenceEqual(Program2Tokens), Is.True);
     }
 
     [Test]
     public void TestNegative_Tokenize()
     {
-        scanner.Load(Program3);
-        Assert.Throws<InvalidOperationException>(() => scanner.Tokenize());
+        _scanner.Load(Program3);
+        Assert.Throws<InvalidOperationException>(() => _scanner.Tokenize());
     }
 }
