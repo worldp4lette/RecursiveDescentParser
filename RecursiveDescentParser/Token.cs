@@ -1,6 +1,27 @@
 ﻿namespace RecursiveDescentParser;
 
-public record Token(TokenType Type, string? Value = null);
+public record struct Token(TokenType Type, string? Value = null)
+{
+    public bool IsPlus()
+    {
+        return this.Type == TokenType.Operator && (this.Value?.Equals("+", StringComparison.Ordinal) ?? false);
+    }
+
+    public bool IsMinus()
+    {
+        return this.Type == TokenType.Operator && (this.Value?.Equals("-", StringComparison.Ordinal) ?? false);
+    }
+
+    public bool IsMul()
+    {
+        return this.Type == TokenType.Operator && (this.Value?.Equals("*", StringComparison.Ordinal) ?? false);
+    }
+
+    public bool IsDiv()
+    {
+        return this.Type == TokenType.Operator && (this.Value?.Equals("/", StringComparison.Ordinal) ?? false);
+    }
+};
 
 public enum TokenType
 {
