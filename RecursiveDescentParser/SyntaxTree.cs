@@ -21,8 +21,11 @@ public class SyntaxTree
         var left = Walk(node.LeftChild!);
         var op = node.Value.ToString();
         var right = Walk(node.RightChild!);
-        
-        return $"{left} {op} {right}";
+
+        var strList = new List<string>() { left, op, right };
+        strList.RemoveAll(elem => elem == string.Empty);
+
+        return string.Join(" ", strList);
     }
 }
 

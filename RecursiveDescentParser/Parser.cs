@@ -60,7 +60,7 @@ public class Parser : IParser
 
         if (op.Type == TokenType.None)
         {
-            return new SyntaxNode(leftChild.Value);
+            return leftChild;
         }
         
         return new SyntaxNode(op, leftChild, rightChild);
@@ -90,7 +90,7 @@ public class Parser : IParser
 
         if (op.Type == TokenType.None)
         {
-            return new SyntaxNode(leftChild.Value);
+            return leftChild;
         }
 
         return new SyntaxNode(op, leftChild, rightChild);
