@@ -6,7 +6,7 @@ public class Parser : IParser
     private int _position;
     private Token _token = new Token(TokenType.None);
 
-    private SyntaxTree _syntaxTree = new();
+    private readonly SyntaxTree _syntaxTree = new();
 
     private Token NextToken()
     {
@@ -80,7 +80,7 @@ public class Parser : IParser
             return new PrimeReturnType(new Token(TokenType.Operator, "-"), Expr());
         }
 
-        return new PrimeReturnType(new Token(TokenType.None), null);
+        return new PrimeReturnType(new Token(TokenType.None), new SyntaxNode());
     }
 
     private SyntaxNode Term()
@@ -110,7 +110,7 @@ public class Parser : IParser
             return new PrimeReturnType(new Token(TokenType.Operator, "/"), Expr());
         }
         
-        return new PrimeReturnType(new Token(TokenType.None), null);
+        return new PrimeReturnType(new Token(TokenType.None), new SyntaxNode());
     }
 
     private SyntaxNode Factor()
@@ -133,4 +133,4 @@ public class Parser : IParser
     }
 }
 
-public record PrimeReturnType(Token Value, SyntaxNode? RightChild);
+public record PrimeReturnType(Token Value, SyntaxNode RightChild);
