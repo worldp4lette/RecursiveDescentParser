@@ -41,13 +41,13 @@ public class ParserTest
         new Token(TokenType.EOF)
     ];
 
-    private static readonly string Program1Traversal = "3 + 2";
+    private static readonly string Program1Traversal = "+ 3 2";
 
-    private static readonly string Program2Traversal = "3 + 2 * x";
+    private static readonly string Program2Traversal = "+ 3 * 2 x";
 
     private static readonly string Program3Traversal = "3";
 
-    private static readonly string Program4Traversal = "3 / 5 + 2 * x";
+    private static readonly string Program4Traversal = "+ / 3 5 * 2 x";
     
     private IParser _parser;
 

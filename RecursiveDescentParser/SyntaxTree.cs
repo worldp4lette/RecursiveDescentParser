@@ -18,11 +18,11 @@ public class SyntaxTree
             return node.Value.ToString();
         }
 
-        var left = Walk(node.LeftChild!);
         var op = node.Value.ToString();
+        var left = Walk(node.LeftChild!);
         var right = Walk(node.RightChild!);
 
-        var strList = new List<string>() { left, op, right };
+        var strList = new List<string>() { op, left, right };
         strList.RemoveAll(elem => elem == string.Empty);
 
         return string.Join(" ", strList);
