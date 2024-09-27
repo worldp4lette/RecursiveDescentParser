@@ -71,7 +71,7 @@ public class ParserTest
         _parser.Load(Program3Tokens);
         var parseResult3 = _parser.Parse().PreOrder();
         Assert.That(parseResult3.Equals(Program3Traversal, StringComparison.Ordinal));
-
+        
         _parser.Load(Program4Tokens);
         var parseResult4 = _parser.Parse().PreOrder();
         Assert.That(parseResult4.Equals(Program4Traversal, StringComparison.Ordinal));

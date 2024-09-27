@@ -101,13 +101,13 @@ public class Parser : IParser
         if (_token.IsMul())
         {
             _token = NextToken();
-            return new PrimeReturnType(new Token(TokenType.Operator, "*"), Expr());
+            return new PrimeReturnType(new Token(TokenType.Operator, "*"), Term());
         }
         
         if (_token.IsDiv())
         {
             _token = NextToken();
-            return new PrimeReturnType(new Token(TokenType.Operator, "/"), Expr());
+            return new PrimeReturnType(new Token(TokenType.Operator, "/"), Term());
         }
         
         return new PrimeReturnType(new Token(TokenType.None), new SyntaxNode());
