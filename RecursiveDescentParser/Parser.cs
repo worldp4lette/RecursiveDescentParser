@@ -8,6 +8,8 @@ public class Parser : IParser
 
     private readonly SyntaxTree _syntaxTree = new();
 
+    public int MethodCallCount = 0;
+
     private Token NextToken()
     {
         if (_position < _tokens.Count - 1)
@@ -32,10 +34,13 @@ public class Parser : IParser
         
         _tokens = tokens;
         _position = -1;
+        MethodCallCount = 0;
     }
 
     public SyntaxTree Parse()
     {
+        MethodCallCount += 1;
+        
         if (_tokens.Count < 1)
         {
             throw new InvalidOperationException("Parser is not loaded yet.");
@@ -55,6 +60,8 @@ public class Parser : IParser
 
     private SyntaxNode Expr()
     {
+        MethodCallCount += 1;
+        
         var leftChild = Term();
         var (op, rightChild) = ExprPrime();
 
@@ -68,6 +75,8 @@ public class Parser : IParser
 
     private PrimeReturnType ExprPrime()
     {
+        MethodCallCount += 1;
+        
         if (_token.IsPlus())
         {
             _token = NextToken();
@@ -85,6 +94,8 @@ public class Parser : IParser
 
     private SyntaxNode Term()
     {
+        MethodCallCount += 1;
+        
         var leftChild = Factor();
         var (op, rightChild) = TermPrime();
 
@@ -98,6 +109,8 @@ public class Parser : IParser
 
     private PrimeReturnType TermPrime()
     {
+        MethodCallCount += 1;
+        
         if (_token.IsMul())
         {
             _token = NextToken();
@@ -115,6 +128,8 @@ public class Parser : IParser
 
     private SyntaxNode Factor()
     {
+        MethodCallCount += 1;
+        
         switch (_token.Type)
         {
             case TokenType.Number:

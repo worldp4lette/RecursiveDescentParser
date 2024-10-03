@@ -40,8 +40,8 @@ static class Program
             try
             {
                 var tree = parser.Parse();
-                Console.WriteLine("Parsed expression: ");
-                Console.WriteLine(tree.PreOrder());
+                Console.WriteLine($"Parsed expression: {tree.PreOrder()}");
+                Console.WriteLine($"{parser.MethodCallCount} function calls have been made during the parsing process.");
                 Console.WriteLine();
             }
             catch (InvalidOperationException e)
